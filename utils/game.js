@@ -4,7 +4,7 @@ var app = require("breadQuest");
 function GameUtils() {
     this.framesPerSecond = 16;
     this.hasStopped = false;
-    this.maximumPlayerCount = 15;
+    this.maximumPlayerCount = 50;
     this.persistDelay = 60 * this.framesPerSecond;
     this.removeFarChunksDelay = 0;
     this.enemySpawnDelay = 0;
@@ -158,7 +158,7 @@ GameUtils.prototype.performUpdate = function(username, commandList, done) {
     var self = this;
     function processNextCommand() {
         if (self.isPersistingEverything) {
-            setTimeout(processNextCommand, 100);
+            setTimeout(processNextCommand, 10);
             return;
         }
         while (true) {
@@ -379,7 +379,7 @@ function performStartPlayingCommand(command, player, commandList, done, errorHan
 
 function performGetTilesCommand(command, player, commandList) {
     var tempSize = command.size;
-    if (tempSize > 50) {
+    if (tempSize > 200) {
         return;
     }
     var tempPos = player.pos.copy();
