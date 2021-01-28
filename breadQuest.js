@@ -33,15 +33,7 @@ if (mode == "development") {
 }
 
 var server;
-if (mode == "development") {
-    server = http.createServer(app);
-} else {
-    var privateKey  = fs.readFileSync("ssl.key", "utf8");
-    var certificate = fs.readFileSync("ssl.crt", "utf8");
-    var caBundle = fs.readFileSync("ssl.ca-bundle", "utf8");
-    var credentials = {key: privateKey, cert: certificate, ca: caBundle};
-    server = https.createServer(credentials, app);
-}
+server = http.createServer(app);
 expressWs(app, server);
 
 module.exports = app;
