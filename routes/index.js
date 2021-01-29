@@ -53,7 +53,7 @@ function comparePasswordWithHash(password, hash, done) {
 }
 
 function isAdmin(username) {
-    return (username == "ostracod");
+    return false; // (username == "ostracod");
 }
 
 router.get("/", function(req, res, next) {
